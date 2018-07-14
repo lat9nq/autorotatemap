@@ -1,10 +1,14 @@
 local filename = "autorotatemap.txt"
-local one_day = 86400
+local one_day = 86400*2
 local default_map = "gm_functional_flatgrass"
 local map_list = {
 	"gm_freespace_13",
 	"gm_flatgrass",
-	"gm_construct"
+	"gm_functional_flatgrass",
+	"gm_excess_construct_13",
+	"gm_construct_flatgrass_v6-2",
+	"gm_bigcity",
+	"gm_bluehils_test3"
 }
 
 local function readInfo(s)
