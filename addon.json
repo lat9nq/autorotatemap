@@ -1,0 +1,6 @@
+{
+	"title"	:	"Auto-Rotate Map",
+	"type"	:	"ServerContent",
+	"tag"	:	[	"fun"	],
+	"ignore"	:	[ ".gitignore" , ".git/*" , "*.jpg" , "LICENSE" , "README.md", "*.xcf", "*.swp" ]
+}
