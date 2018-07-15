@@ -70,7 +70,7 @@ local function First()
 		log("setting a new map")
 
 		relevant_start = os.time()
-		map_name = map_list[math.random(0,#map_list)]
+		map_name = map_list[math.random(1,#map_list)]
 
 		log("map set to " .. map_name)
 		RunConsoleCommand("changelevel", map_name)
