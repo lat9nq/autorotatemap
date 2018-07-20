@@ -22,15 +22,15 @@ local function readInfo(s)
 	return util.JSONToTable(recv)
 end
 
-local function writeInfo(s, time, map_name)
+local function writeInfo(s, t, map_name)
 	local f = file.Open(s, "w", "DATA")
 	if not f then
 		return false
 	end
 
 	f:Write(util.TableToJSON( {
-		time,
-		map_name
+		t,
+		map_name,
 	}))
 	f:Close()
 
@@ -44,6 +44,7 @@ end
 local function First()
 	print("---------------------------")
 	log("starting")
+	local current_map = string.Split(cvars.String("host_map"), ".")[1]
 	log("current map: " .. cvars.String("host_map"))
 
 	log("loading " .. filename)
@@ -52,6 +53,7 @@ local function First()
 	local map_name = default_map
 	local last_start = os.time()
 	local relevant_start = os.time()
+	local last_actual = default_map
 
 	if (recv) then
 		log("loaded " .. filename .. " successfully")
@@ -59,6 +61,7 @@ local function First()
 		last_start = recv[1]
 		relevant_start = last_start
 		map_name = recv[2]
+		last_actual = recv[3]
 
 		log("last relevant server start at " .. last_start)
 		log("last map was " .. map_name)
@@ -73,6 +76,7 @@ local function First()
 		map_name = map_list[math.random(1,#map_list)]
 
 		log("map set to " .. map_name)
+		RunConsoleCommand("host_map", map_name)
 		RunConsoleCommand("changelevel", map_name)
 	end
 	
@@ -84,6 +88,9 @@ local function First()
 		return
 	end
 	log("wrote " .. filename .. " succesfully")
+end
+
+local function Last()
 end
 
 First()
